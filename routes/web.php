@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Livewire\TestExample;
+use App\Http\Livewire\TaskComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', TestExample::class);
+Route::get('/task/{name}', TaskComponent::class);
