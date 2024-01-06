@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Index;
+use App\Http\Livewire\Posts;
 use App\Http\Livewire\TaskComponent;
 use Illuminate\Support\Facades\Route;
 
@@ -14,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', Index::class);
 Route::get('/task/{user}', TaskComponent::class);
+Route::get('/posts', Posts::class);
