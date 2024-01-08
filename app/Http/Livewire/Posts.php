@@ -7,6 +7,8 @@ use Livewire\Component;
 
 class Posts extends Component
 {
+    public $topTitle = "Hello";
+    public $isSuccess = true;
 
     public $title;
     public $content;

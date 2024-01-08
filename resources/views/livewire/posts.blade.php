@@ -1,9 +1,11 @@
 <div>
     <div class="container">
         <h1 class="text-center">Title of page</h1>
-        <form wire:submit.prevent='savePost'>
+        <h1 class="text-center {{ $isSuccess ? 'text-success' : 'text-danger' }}">{{ $topTitle }}</h1>
+        <form wire:keydown.enter.prevent="savePost">
             <div class="mt-2">
-                <button class="btn btn-success mx-1" type="submit">add</button>
+                {{-- <button class="btn btn-success mx-1" type="button" wire:click.stop="$set('topTitle', 'hi')">add</button> --}}
+                <button class="btn btn-success mx-1" type="button" wire:click.stop="$toggle('isSuccess')">add</button>
                 <input type="text" class="form-control mx-1" placeholder="title" wire:model.lazy='title'>
             </div>
             @error('title')
