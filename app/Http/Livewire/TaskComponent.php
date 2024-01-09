@@ -5,14 +5,18 @@ namespace App\Http\Livewire;
 use App\Models\Task;
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class TaskComponent extends Component
 {
+    use WithPagination;
 
     public $user;
     public $task;
-    public $tasks;
+    public $allTasks;
     public $editId = 0;
+
+    protected $paginationTheme = 'bootstrap';
 
     public function addNewTask(): void
     {
@@ -21,7 +25,7 @@ class TaskComponent extends Component
             'user_id' => $this->user->id
         ]);
         $this->task = null;
-        $this->tasks = Task::query()->where('user_id', $this->user->id)->get();
+        $this->allTasks = Task::query()->where('user_id', $this->user->id)->get();
     }
 
     public function editTask($id)
@@ -37,7 +41,7 @@ class TaskComponent extends Component
             $task = Task::find($this->editId);
             $task->task = $this->task;
             $task->save();
-            $this->tasks = Task::query()->where('user_id', $this->user->id)->get();
+            $this->allTasks = Task::query()->where('user_id', $this->user->id)->get();
             $this->task = null;
             $this->editId = 0;
         }
@@ -46,17 +50,19 @@ class TaskComponent extends Component
     public function deleteTask($id)
     {
         Task::query()->where('id', $id)->delete();
-        $this->tasks = $this->tasks->where('id', '!=', $id);
+        $this->allTasks = $this->allTasks->where('id', '!=', $id);
     }
 
     public function mount($user)
     {
         $this->user = User::find($user);
-        $this->tasks = Task::query()->where('user_id', $user)->get();
+        $this->allTasks = Task::query()->where('user_id', $user)->get();
     }
 
     public function render()
     {
-        return view('livewire.task-component');
+        $tasks = Task::where('user_id', $this->user->id)->paginate(3);
+
+        return view('livewire.task-component', compact('tasks'));
     }
 }
