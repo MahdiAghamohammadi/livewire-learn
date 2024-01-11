@@ -9,6 +9,12 @@ class Index extends Component
 
     public $title;
     public $welcome;
+    public $clockColor = true;
+
+    public function changeColor()
+    {
+        $this->clockColor = !$this->clockColor;
+    }
 
     public function resetProps()
     {
