@@ -45,7 +45,7 @@
                 <small class="text-danger text-center">{{ $message }}</small>
             @enderror
         </form>
-        <ul>
+        <ul wire:init='setLoaded'>
             @foreach ($allPost as $post)
                 <li>
                     <h3>{{ $post->title }}</h3>

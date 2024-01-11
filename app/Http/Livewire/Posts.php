@@ -17,7 +17,8 @@ class Posts extends Component
     public $content;
     public $image;
 
-    public $allPost;
+    // public $allPost;
+    public $loaded;
 
     protected $rules = [
         'title' => 'required|string|min:5',
@@ -36,16 +37,25 @@ class Posts extends Component
             'image' => "/storage/images/" . explode("/", $imgPath)[2]
         ]);
         $this->reset('title', 'content', 'image');
-        $this->allPost = Post::all();
+        // $this->allPost = Post::all();
+    }
+
+    public function setLoaded()
+    {
+        $this->loaded = true;
     }
 
     public function mount()
     {
-        $this->allPost = Post::all();
+        // $this->allPost = Post::all();
     }
 
     public function render()
     {
-        return view('livewire.posts');
+        return view('livewire.posts', [
+            'allPost' => $this->loaded
+                ?  Post::all()
+                : []
+        ]);
     }
 }
