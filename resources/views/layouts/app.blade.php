@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css"/>
+    <link rel="stylesheet" href="/assets/css/animate.min.css"/>
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+    <link rel="stylesheet" href="/assets/css/style.css"/>
+    <title>آسان آموز برنامه نویسی</title>
     @livewireStyles
 </head>
-<body class="antialiased">
-{{ $slot }}
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+
+<body dir="rtl">
+<livewire:header/>
+{{ $slot }}
+<livewire:footer/>
+
+<script src="/assets/js/jquery-3.5.1.min.js"></script>
+<script src="/assets/js/popper.js"></script>
+<script src="/assets/js/bootstrap/bootstrap.min.js"></script>
+<script src="/assets/js/grid.js"></script>
 @livewireScripts
 </body>
 </html>
+

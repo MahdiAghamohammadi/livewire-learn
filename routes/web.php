@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Livewire\Index;
-use App\Http\Livewire\Posts;
-use App\Http\Livewire\TaskComponent;
+use App\Http\Livewire\Index\Index;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +15,3 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', Index::class);
-Route::get('/task/{user}', TaskComponent::class);
-Route::get('/posts', Posts::class);
